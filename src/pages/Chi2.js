@@ -99,7 +99,7 @@ function Chi2(){
                     placeholder="Ingrese el margen de error usando el . como separador"
                     value={mError}
                     onChange={(e) => {setMError( e.target.value.toString().replace(/[^0-9.]+/, ''))}}/>
-                <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
+                <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separación sea un salto de línea</p>
                 <Upload
                     accept=".txt"
                     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -123,16 +123,16 @@ function Chi2(){
                         )}
                     </Col>
                     <Col hidden={passTest===''} span={12}>
-                        <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Superó prueba" style={{ marginBottom: 5 }}>
                             <p>{passTest?"Pasó la prueba":"No pasó la prueba"}</p>
                         </Card>
-                        <Card title="Suma Chi2" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Suma Chi2" style={{ marginBottom: 5 }}>
                             <p>{sumaChi}</p>
                         </Card>
-                        <Card title="Valor de comparación" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Valor de comparación" style={{ marginBottom: 5 }}>
                             <p>{valorComparasion}</p>
                         </Card>
-                        <Card title="Chi2" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Chi2" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={column_chi}
                                 dataSource={to_render_chi()}
@@ -140,7 +140,7 @@ function Chi2(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Ni" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Ni" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={column_ni}
                                 dataSource={to_render_ni()}

@@ -47,7 +47,7 @@ function Means(){
             <p>Prueba de Medias</p>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                 <div>
-                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
+                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separación sea un salto de línea</p>
                     <Upload
                         accept=".txt"
                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -72,22 +72,22 @@ function Means(){
                         )}
                     </Col>
                     <Col hidden={isOk===''} span={12}>
-                        <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Superó prueba" style={{ marginBottom: 5 }}>
                             <p>{isOk?"Pasó la prueba":"No pasó la prueba"}</p>
                         </Card>
-                        <Card title="Límite Inferior" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Límite Inferior" style={{ marginBottom: 5 }}>
                             <p>{limiteInferior}</p>
                         </Card>
-                        <Card title="Límite Superior" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Límite Superior" style={{ marginBottom: 5 }}>
                             <p>{limiteSuperior}</p>
                         </Card>
-                        <Card title="Media" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Media" style={{ marginBottom: 5 }}>
                             <p>{media}</p>
                         </Card>
-                        <Card title="N" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="N" style={{ marginBottom: 5 }}>
                             <p>{n}</p>
                         </Card>
-                        <Card title="Z" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Z" style={{ marginBottom: 5 }}>
                             <p>{z}</p>
                         </Card>
                     </Col>

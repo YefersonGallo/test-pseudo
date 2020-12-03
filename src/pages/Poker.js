@@ -30,7 +30,17 @@ function Poker(){
         reader.readAsText(file);
     }
 
+    let to_five_nums = () =>{
+        const arr = []
+        numbers.map(num =>(
+            arr.push(Number.parseFloat(num).toFixed(5))
+        ))
+        setNumbers(arr)
+    }
+
     let send_request = async () =>{
+        to_five_nums()
+        console.log(numbers)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -85,7 +95,7 @@ function Poker(){
             <p>Prueba de Póker</p>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                 <div>
-                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
+                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separación sea un salto de línea</p>
                     <Upload
                         accept=".txt"
                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -110,16 +120,16 @@ function Poker(){
                         )}
                     </Col>
                     <Col hidden={passTest===''} span={12}>
-                        <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Superó prueba" style={{ marginBottom: 5 }}>
                             <p>{passTest?"Pasó la prueba":"No pasó la prueba"}</p>
                         </Card>
-                        <Card title="Chi2" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Chi2" style={{ marginBottom: 5 }}>
                             <p>{chi2}</p>
                         </Card>
-                        <Card title="Suma" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Suma" style={{ marginBottom: 5 }}>
                             <p>{sum}</p>
                         </Card>
-                        <Card title="Todos diferentes" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Todos diferentes" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(d)}
@@ -127,7 +137,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Full House" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Full House" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(f)}
@@ -135,7 +145,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Dos pares" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Dos pares" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(k)}
@@ -143,7 +153,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Un par" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Un par" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(o)}
@@ -151,7 +161,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Póker" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Póker" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(p)}
@@ -159,7 +169,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Una quintilla" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Una quintilla" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(q)}
@@ -167,7 +177,7 @@ function Poker(){
                                 pagination={{ pageSize: 100 }}
                             />
                         </Card>
-                        <Card title="Una tercia" style={{ width: 400, marginBottom: 5 }}>
+                        <Card title="Una tercia" style={{ marginBottom: 5 }}>
                             <Table
                                 columns={columns}
                                 dataSource={to_render_d(t)}

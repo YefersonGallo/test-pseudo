@@ -50,7 +50,7 @@ function Variance(){
                         placeholder="Ingrese el error, con decimales usando el ."
                         value={error}
                         onChange={(e) => {setError( e.target.value.toString().replace(/[^0-9.]+/, ''))}}/>
-                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
+                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separación sea un salto de línea</p>
                     <Upload
                         accept=".txt"
                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -78,13 +78,13 @@ function Variance(){
                         <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
                             <p>{passTest?"Pasó la prueba":"No pasó la prueba"}</p>
                         </Card>
-                        <Card title="Límite Inferior" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Límite Inferior" style={{ marginBottom: 5 }}>
                             <p>{limiteInferior}</p>
                         </Card>
-                        <Card title="Límite Superior" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Límite Superior" style={{ marginBottom: 5 }}>
                             <p>{limiteSuperior}</p>
                         </Card>
-                        <Card title="Varianza" style={{ width: 200, marginBottom: 5 }}>
+                        <Card title="Varianza" style={{ marginBottom: 5 }}>
                             <p>{varianza}</p>
                         </Card>
                     </Col>
