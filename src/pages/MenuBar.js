@@ -1,74 +1,80 @@
 import { useState }  from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import 'antd/dist/antd.css';
 import './MenuBar.css'
 import { Layout, Menu } from 'antd';
-import { Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import Chi2 from "./Chi2";
+import Variance from "./Variance";
+import Means from "./Means";
+import KS from "./KS";
+import Poker from "./Poker";
 
 function MenuBar(){
-    const { Header, Sider, Content } = Layout;
+    const { Header, Sider } = Layout;
     const [select, setSelect] = useState('1');
-    const [numbers, setNumbers] = useState([]);
-
-    let read_file=(file)=>{
-        var reader = new FileReader()
-        reader.onload = function (event) {
-            setNumbers(event.target.result.split('\n'));
-        }
-        reader.readAsText(file);
-    }
 
     return (
-        <Layout>
-            <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                style={{
-                    height: '100vh',
-                }}
-            >
-                <Menu theme="dark" mode="inline" selectedKeys={[select]} defaultSelectedKeys={["1"]} onClick={(e) => {setSelect(e.key)}}>
-                    <Menu.Item key="1">
-                        Prueba de Medias
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                        Prueba de Varianza
-                    </Menu.Item>
-                    <Menu.Item key="3">
-                        Prueba KS
-                    </Menu.Item>
-                    <Menu.Item key="4">
-                        Prueba Chi^2
-                    </Menu.Item>
-                    <Menu.Item key="5">
-                        Prueba de Póker
-                    </Menu.Item>
-                </Menu>
-            </Sider>
-            <Layout className="site-layout">
-                <Header className="site-layout-background" style={{ padding: 0 }} >
-                    <h1>Pruebas de Números Pseudoaletorios</h1>
-                </Header>
-                <Content style={{ margin: '24px 16px 0' }}>
-                    <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                        <Upload
-                            accept=".txt"
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                            listType="picture"
-                            beforeUpload={file => read_file(file)}
-                        >
-                            <Button icon={<UploadOutlined />}>Upload</Button>
-                        </Upload>
-                        <div
-                            className={numbers.length!==0?"":"is-hidden"}
-                        >
-                            {numbers.map(num =>
-                                <h1>{num} -</h1>
-                        )}</div>
-                    </div>
-                </Content>
+        <Router>
+            <Layout>
+                <Sider
+                    breakpoint="lg"
+                    collapsedWidth="0"
+                    style={{
+                        height: '100vh',
+                    }}
+                >
+                    <Menu theme="dark" mode="inline" selectedKeys={[select]} defaultSelectedKeys={["1"]} onClick={(e) => {setSelect(e.key)}}>
+                        <Menu.Item key="1">
+                            <Link to="/">
+                                Prueba de Medias
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="2">
+                            <Link to="/variance">
+                                Prueba de Varianza
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="3">
+                            <Link to="/ks">
+                                Prueba KS
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="4">
+                            <Link to="/chi2">
+                                Prueba Chi^2
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="5">
+                            <Link to="/poker">
+                                Prueba de Póker
+                            </Link>
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
+                <Layout className="site-layout">
+                    <Header className="site-layout-background" style={{ padding: 0 }} >
+                        <h1>Pruebas de Números Pseudoaletorios</h1>
+                    </Header>
+                    <Switch>
+                        <Route exact path="/">
+                            <Means />
+                        </Route>
+                        <Route path="/variance">
+                            <Variance />
+                        </Route>
+                        <Route path="/ks">
+                            <KS />
+                        </Route>
+                        <Route path="/chi2">
+                            <Chi2 />
+                        </Route>
+                        <Route path="/poker">
+                            <Poker />
+                        </Route>
+                    </Switch>
+                </Layout>
             </Layout>
-        </Layout>
+        </Router>
     );
 }
 export default MenuBar;
