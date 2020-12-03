@@ -33,6 +33,7 @@ function Variance(){
         };
         const responseP = await fetch('https://dcb-node-deploy-poker.herokuapp.com/Pvarianza', requestOptions)
         const res = await responseP.json();
+        console.log(res)
         setLimiteSuperior(res.limiteSuperior)
         setLimiteInferior(res.limiteInferior)
         setPassTest(res.passTest)
