@@ -9,7 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="front-test" />
+    <orderEntry type="module" module-name="front-ts" />
     <orderEntry type="module" module-name="front-generation" />
   </component>
 </module>

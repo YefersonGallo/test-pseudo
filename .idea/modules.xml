@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../front-generation/.idea/front-generation.iml" filepath="$PROJECT_DIR$/../front-generation/.idea/front-generation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../front-test/.idea/front-test.iml" filepath="$PROJECT_DIR$/../front-test/.idea/front-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../front-ts/.idea/front-ts.iml" filepath="$PROJECT_DIR$/../front-ts/.idea/front-ts.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/untitled1.iml" filepath="$PROJECT_DIR$/.idea/untitled1.iml" />
     </modules>
   </component>
