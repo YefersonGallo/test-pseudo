@@ -1,10 +1,19 @@
 import { useState, useEffect }  from 'react';
-import {Button, Layout, Upload} from "antd";
+import {Button, Col, Layout, Row, Upload} from "antd";
 import {UploadOutlined} from "@ant-design/icons";
+import Title from "antd/es/typography/Title";
+import Text from "antd/lib/typography/Text";
+import {Card} from "antd/es";
 
 function Means(){
     const { Content } = Layout;
     const [numbers, setNumbers] = useState([]);
+    const [isOk, setIsOk] = useState('');
+    const [limiteInferior, setLimiteInferior] = useState('');
+    const [limiteSuperior, setLimiteSuperior] = useState('');
+    const [media, setMedia] = useState('');
+    const [n, setN] = useState('');
+    const [z, setZ] = useState('');
 
     useEffect(() =>{
         fetch('https://dcb-node-deploy-poker.herokuapp.com/ping')
@@ -28,6 +37,12 @@ function Means(){
         const responseP = await fetch('https://dcb-node-deploy-poker.herokuapp.com/mediatest', requestOptions)
         const res = await responseP.json();
         console.log(res)
+        setIsOk(res.isOk)
+        setLimiteInferior(res.limiteInferior)
+        setLimiteSuperior(res.limiteSuperior)
+        setMedia(res.media)
+        setN(res.n)
+        setZ(res.z)
     }
 
     return(
@@ -52,13 +67,19 @@ function Means(){
                         Validar números
                     </Button>
                 </div>
-                <div
-                    className={numbers.length!==0?"":"is-hidden"}
-                >
-                    <h1>Los números ingresados son:</h1>
-                    {numbers.map(num =>
-                        <h1>{num}</h1>
-                    )}</div>
+                <Row>
+                    <Col hidden={numbers.length===0} span={12}>
+                        <h1>Los números ingresados son:</h1>
+                        {numbers.map(num =>
+                            <h1>{num}</h1>
+                        )}
+                    </Col>
+                    <Col hidden={isOk===''} span={12}>
+                        <Card title="Límite Inferior" style={{ width: 300 }}>
+                            <p>{limiteInferior}</p>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
         </Content>
     );
