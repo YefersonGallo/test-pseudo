@@ -1,11 +1,16 @@
 import {useEffect, useState} from 'react';
-import {Button, Layout, Upload, Input} from "antd";
+import {Button, Layout, Upload, Input, Col, Row} from "antd";
 import {UploadOutlined} from "@ant-design/icons";
+import {Card} from "antd/es";
 
 function Variance(){
     const { Content } = Layout;
     const [numbers, setNumbers] = useState([]);
     const [error, setError] = useState();
+    const [passTest, setPassTest] = useState('');
+    const [limiteInferior, setLimiteInferior] = useState('');
+    const [limiteSuperior, setLimiteSuperior] = useState('');
+    const [varianza, setVarianza] = useState('');
 
     useEffect(() =>{
         fetch('https://dcb-node-deploy-poker.herokuapp.com/ping')
@@ -28,7 +33,10 @@ function Variance(){
         };
         const responseP = await fetch('https://dcb-node-deploy-poker.herokuapp.com/Pvarianza', requestOptions)
         const res = await responseP.json();
-        console.log(res)
+        setLimiteSuperior(res.limiteSuperior)
+        setLimiteInferior(res.limiteInferior)
+        setPassTest(res.passTest)
+        setVarianza(res.varianza)
     }
 
     return(
@@ -36,12 +44,12 @@ function Variance(){
             <p>Prueba de Varianzas</p>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                 <div>
-                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
                     <Input
                         type="text"
                         placeholder="Ingrese el error, con decimales usando el ."
                         value={error}
                         onChange={(e) => {setError( e.target.value.toString().replace(/[^0-9.]+/, ''))}}/>
+                    <p>A continuación suba un archivo de los números donde se encuentran cada uno en una línea, es decir la separeción sea un salto de línea</p>
                     <Upload
                         accept=".txt"
                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -58,13 +66,28 @@ function Variance(){
                         Validar números
                     </Button>
                 </div>
-                <div
-                    className={numbers.length!==0?"":"is-hidden"}
-                >
-                    <h1>Los números ingresados son:</h1>
-                    {numbers.map(num =>
-                        <h1>{num}</h1>
-                    )}</div>
+                <Row style={{ paddingTop: 10 }}>
+                    <Col hidden={numbers.length===0} span={12}>
+                        <h1>Los números ingresados son:</h1>
+                        {numbers.map(num =>
+                            <h1>{num}</h1>
+                        )}
+                    </Col>
+                    <Col hidden={passTest===''} span={12}>
+                        <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{passTest?"Pasó la prueba":"No pasó la prueba"}</p>
+                        </Card>
+                        <Card title="Límite Inferior" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{limiteInferior}</p>
+                        </Card>
+                        <Card title="Límite Superior" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{limiteSuperior}</p>
+                        </Card>
+                        <Card title="Varianza" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{varianza}</p>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
         </Content>
     );

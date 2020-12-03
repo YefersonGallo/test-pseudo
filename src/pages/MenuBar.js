@@ -23,7 +23,7 @@ function MenuBar(){
                         height: '100vh',
                     }}
                 >
-                    <Menu theme="dark" mode="inline" selectedKeys={[select]} defaultSelectedKeys={["1"]} onClick={(e) => {setSelect(e.key)}}>
+                    <Menu theme="dark" mode="inline" selectedKeys={[select]} onClick={(e) => {setSelect(e.key)}}>
                         <Menu.Item key="1">
                             <Link to="/">
                                 Prueba de Medias

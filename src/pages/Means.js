@@ -1,8 +1,6 @@
 import { useState, useEffect }  from 'react';
 import {Button, Col, Layout, Row, Upload} from "antd";
 import {UploadOutlined} from "@ant-design/icons";
-import Title from "antd/es/typography/Title";
-import Text from "antd/lib/typography/Text";
 import {Card} from "antd/es";
 
 function Means(){
@@ -36,7 +34,6 @@ function Means(){
         };
         const responseP = await fetch('https://dcb-node-deploy-poker.herokuapp.com/mediatest', requestOptions)
         const res = await responseP.json();
-        console.log(res)
         setIsOk(res.isOk)
         setLimiteInferior(res.limiteInferior)
         setLimiteSuperior(res.limiteSuperior)
@@ -67,7 +64,7 @@ function Means(){
                         Validar números
                     </Button>
                 </div>
-                <Row>
+                <Row style={{ paddingTop: 10 }}>
                     <Col hidden={numbers.length===0} span={12}>
                         <h1>Los números ingresados son:</h1>
                         {numbers.map(num =>
@@ -75,8 +72,23 @@ function Means(){
                         )}
                     </Col>
                     <Col hidden={isOk===''} span={12}>
-                        <Card title="Límite Inferior" style={{ width: 300 }}>
+                        <Card title="Superó prueba" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{isOk?"Pasó la prueba":"No pasó la prueba"}</p>
+                        </Card>
+                        <Card title="Límite Inferior" style={{ width: 200, marginBottom: 5 }}>
                             <p>{limiteInferior}</p>
+                        </Card>
+                        <Card title="Límite Superior" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{limiteSuperior}</p>
+                        </Card>
+                        <Card title="Media" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{media}</p>
+                        </Card>
+                        <Card title="N" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{n}</p>
+                        </Card>
+                        <Card title="Z" style={{ width: 200, marginBottom: 5 }}>
+                            <p>{z}</p>
                         </Card>
                     </Col>
                 </Row>
