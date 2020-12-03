@@ -106,7 +106,7 @@ function Poker(){
                     <Col hidden={numbers.length===0} span={12}>
                         <h1>Los números ingresados son:</h1>
                         {numbers.map(num =>
-                            <h1>{num}</h1>
+                            <h1>{num.toFixed(5)}</h1>
                         )}
                     </Col>
                     <Col hidden={passTest===''} span={12}>
